@@ -1,3 +1,5 @@
+using System;
+using AutoMapper;
 using CommandAPI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,12 +29,14 @@ namespace CommandAPI
             builder.ConnectionString = Configuration.GetConnectionString("PostgreSqlConnection");
 
             builder.Username = Configuration["UserId"];
-            builder.Username = Configuration["Password"];
+            builder.Password = Configuration["Password"];
 
 
             services.AddDbContext<CommandContext>(opt => opt.UseNpgsql(builder.ConnectionString));
 
             services.AddControllers();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // services.AddScoped<ICommandAPIRepo, MockCommandAPIRepo>();
             services.AddScoped<ICommandAPIRepo, SqlCommandAPIRepo>();
