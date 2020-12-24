@@ -38,19 +38,10 @@ namespace CommandAPI.Data
             return _context.CommandItems.ToList();
         }
 
-        public Command GetCommandById(int id)
-        {
-            return _context.CommandItems.FirstOrDefault(c => c.Id == id);
-        }
+        public Command GetCommandById(int id) => _context.CommandItems.FirstOrDefault(c => c.Id == id);
 
-        public bool SaveChanges()
-        {
-            return (_context.SaveChanges() >= 0);
-        }
+        public bool SaveChanges() => (_context.SaveChanges() >= 0);
 
-        public void UpdateCommand(Command cmd)
-        {
-            _context.CommandItems.Update(cmd);
-        }
+        public void UpdateCommand(Command cmd) => _context.CommandItems.Update(cmd);
     }
 }
