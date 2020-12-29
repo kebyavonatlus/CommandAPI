@@ -208,7 +208,7 @@ namespace CommandAPI.Tests
 
             //Then
             //Assert
-            Assert.IsType<NoContentResult>(result);
+            Assert.IsType<NotFoundResult>(result);
         }
 
         [Fact]
